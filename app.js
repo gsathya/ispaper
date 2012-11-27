@@ -12,9 +12,18 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+var text;
+
 io.sockets.on('connection', function (socket) {
-  socket.on('diff', function (data) {
-      console.log(data);
-      socket.broadcast.emit('message', data);
-  });
+
+    // send data to a new connection
+    if (text !== undefined) {
+        console.log(text);
+        socket.emit('message', text);
+    }
+
+    socket.on('text', function (data) {
+        text = data;
+        socket.broadcast.emit('message', data);
+    });
 });
