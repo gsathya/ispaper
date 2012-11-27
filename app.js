@@ -1,8 +1,7 @@
 var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server)
-  , jquery = require('jquery');
+  , io = require('socket.io').listen(server);
 
 var port = process.env.PORT || 5000;
 server.listen(port, function() {
