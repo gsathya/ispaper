@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var socket = io.connect('http://localhost', {port: 8080});
+    var socket = io.connect(window.location.hostname);
     var prev_text = "";
     var dmp = new diff_match_patch();
 

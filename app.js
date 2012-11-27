@@ -4,7 +4,10 @@ var express = require('express')
   , io = require('socket.io').listen(server)
   , jquery = require('jquery');
 
-server.listen(8080);
+var port = process.env.PORT || 5000;
+server.listen(port, function() {
+  console.log("Listening on " + port);
+});
 
 // custom heroku settings
 io.configure(function () {
